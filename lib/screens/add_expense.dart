@@ -112,12 +112,7 @@ class _AddExpenseState extends State<AddExpenseScreen> {
                     },
                     child: const Text("Cancel")),
                 const SizedBox(width: 8),
-                ElevatedButton(
-                    onPressed: () {
-                      debugPrint(_titleController.text);
-                      debugPrint(_amountController.text);
-                    },
-                    child: const Text("Save"))
+                ElevatedButton(onPressed: () {}, child: const Text("Save"))
               ],
             )
           ],
