@@ -15,10 +15,24 @@ class ExpensesScreen extends StatefulWidget {
 class _ExpensesState extends State<ExpensesScreen> {
   final List<Expense> _registeredExpenses = [];
 
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
+  }
+
+  void _removeExpense(Expense expense) {
+    setState(() {
+      _registeredExpenses.remove(expense);
+    });
+  }
+
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
-        context: context,
-        builder: (BuildContext ctx) => const AddExpenseScreen());
+      context: context,
+      builder: (BuildContext ctx) => AddExpenseScreen(addExpense: _addExpense),
+      isScrollControlled: true,
+    );
   }
 
   @override
@@ -37,7 +51,11 @@ class _ExpensesState extends State<ExpensesScreen> {
       ),
       body: Column(
         children: [
-          Expanded(child: ExpensesList(registeredExpenses: _registeredExpenses))
+          Expanded(
+              child: ExpensesList(
+            registeredExpenses: _registeredExpenses,
+            removeExpense: _removeExpense,
+          ))
         ],
       ),
     );
