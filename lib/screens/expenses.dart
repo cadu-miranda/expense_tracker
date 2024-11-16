@@ -13,20 +13,7 @@ class ExpensesScreen extends StatefulWidget {
 }
 
 class _ExpensesState extends State<ExpensesScreen> {
-  final List<Expense> _registeredExpenses = [
-    // Expense(
-    //   title: "Flutter Course",
-    //   amount: 19.99,
-    //   date: today,
-    //   category: Category.work,
-    // ),
-    // Expense(
-    //   title: "Cinema",
-    //   amount: 15.69,
-    //   date: today,
-    //   category: Category.leisure,
-    // ),
-  ];
+  final List<Expense> _registeredExpenses = [];
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(

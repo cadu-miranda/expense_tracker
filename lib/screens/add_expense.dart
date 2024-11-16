@@ -1,4 +1,5 @@
 import 'package:expense_tracker/models/expense.dart';
+import 'package:expense_tracker/utils/index.dart';
 import 'package:flutter/material.dart';
 
 class AddExpenseScreen extends StatefulWidget {
@@ -14,6 +15,8 @@ class _AddExpenseState extends State<AddExpenseScreen> {
   final TextEditingController _amountController = TextEditingController();
 
   DateTime? _selectedDate;
+
+  Category _selectedCategory = Category.food;
 
   @override
   void dispose() {
@@ -82,8 +85,27 @@ class _AddExpenseState extends State<AddExpenseScreen> {
             ),
             const SizedBox(height: 16),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                DropdownButton(
+                    value: _selectedCategory,
+                    items: Category.values
+                        .map(
+                          (category) => DropdownMenuItem(
+                            value: category,
+                            child: Text(capitalizeFirstLetter(category.name)),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) {
+                      if (value == null) {
+                        return;
+                      }
+
+                      setState(() {
+                        _selectedCategory = value;
+                      });
+                    }),
+                const Spacer(),
                 ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
