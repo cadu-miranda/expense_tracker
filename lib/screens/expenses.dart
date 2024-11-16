@@ -1,12 +1,9 @@
-import 'package:expense_tracker/managers/expense_manager.dart';
 import 'package:expense_tracker/models/expense.dart';
 import 'package:expense_tracker/screens/add_expense.dart';
 import 'package:expense_tracker/widgets/expenses_list.dart';
 import 'package:flutter/material.dart';
 
 final today = DateTime.now();
-
-late final ExpenseManager expensesManager;
 
 class ExpensesScreen extends StatefulWidget {
   const ExpensesScreen({super.key});
@@ -21,8 +18,6 @@ class _ExpensesState extends State<ExpensesScreen> {
   @override
   void initState() {
     super.initState();
-
-    expensesManager = ExpenseManager(_registeredExpenses);
   }
 
   void _addExpense(Expense expense) {
@@ -66,15 +61,16 @@ class _ExpensesState extends State<ExpensesScreen> {
     Widget mainContent;
 
     if (_registeredExpenses.isEmpty) {
-      mainContent = const Center(
+      mainContent = Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             Icons.wallet,
             size: 128,
+            color: Theme.of(context).colorScheme.primary,
           ),
-          Text(
+          const Text(
             "No expenses found",
             style: TextStyle(
               fontSize: 24,

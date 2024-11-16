@@ -13,19 +13,6 @@ final ColorScheme kDarkColorScheme = ColorScheme.fromSeed(
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    darkTheme: ThemeData.dark().copyWith(
-      colorScheme: kDarkColorScheme,
-      cardTheme: const CardTheme().copyWith(
-        color: kDarkColorScheme.secondaryContainer,
-        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: kDarkColorScheme.primaryContainer,
-          foregroundColor: kDarkColorScheme.onPrimaryContainer,
-        ),
-      ),
-    ),
     theme: ThemeData().copyWith(
       colorScheme: kColorScheme,
       appBarTheme: const AppBarTheme().copyWith(
@@ -48,6 +35,19 @@ void main() {
               fontSize: 16,
             ),
           ),
+    ),
+    darkTheme: ThemeData.dark().copyWith(
+      colorScheme: kDarkColorScheme,
+      cardTheme: const CardTheme().copyWith(
+        color: kDarkColorScheme.secondaryContainer,
+        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: kDarkColorScheme.primaryContainer,
+          foregroundColor: kDarkColorScheme.onPrimaryContainer,
+        ),
+      ),
     ),
     home: const ExpensesScreen(),
   ));
