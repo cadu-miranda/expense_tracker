@@ -1,5 +1,6 @@
 import 'package:expense_tracker/models/expense.dart';
 import 'package:expense_tracker/screens/add_expense.dart';
+import 'package:expense_tracker/widgets/chart.dart';
 import 'package:expense_tracker/widgets/expenses_list.dart';
 import 'package:flutter/material.dart';
 
@@ -98,11 +99,10 @@ class _ExpensesState extends State<ExpensesScreen> {
         ],
       ),
       body: Column(
-        children: [Expanded(child: mainContent)],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _openAddExpenseOverlay,
-        child: const Icon(Icons.add),
+        children: [
+          Chart(expenses: _registeredExpenses),
+          Expanded(child: mainContent)
+        ],
       ),
     );
   }
