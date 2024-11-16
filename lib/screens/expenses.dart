@@ -4,8 +4,6 @@ import 'package:expense_tracker/widgets/chart.dart';
 import 'package:expense_tracker/widgets/expenses_list.dart';
 import 'package:flutter/material.dart';
 
-final today = DateTime.now();
-
 class ExpensesScreen extends StatefulWidget {
   const ExpensesScreen({super.key});
 
