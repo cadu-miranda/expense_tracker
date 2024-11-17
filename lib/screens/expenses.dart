@@ -52,11 +52,14 @@ class _ExpensesState extends State<ExpensesScreen> {
       context: context,
       builder: (BuildContext ctx) => AddExpenseScreen(addExpense: _addExpense),
       isScrollControlled: true,
+      useSafeArea: true,
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+
     Widget mainContent;
 
     if (_registeredExpenses.isEmpty) {
@@ -96,12 +99,19 @@ class _ExpensesState extends State<ExpensesScreen> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Chart(expenses: _registeredExpenses),
-          Expanded(child: mainContent)
-        ],
-      ),
+      body: width < 600
+          ? Column(
+              children: [
+                Chart(expenses: _registeredExpenses),
+                Expanded(child: mainContent)
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(child: Chart(expenses: _registeredExpenses)),
+                Expanded(child: mainContent)
+              ],
+            ),
     );
   }
 }
